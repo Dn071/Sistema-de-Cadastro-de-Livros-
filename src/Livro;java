@@ -1,1 +1,97 @@
+public class Livro {
+
+    private String titulo;
+    private String autor;
+    private int ano;
+    private String isbn;
+    private boolean disponivel;
+
+    public Livro(String titulo, String autor, int ano, String isbn, boolean disponivel) {
+        this.titulo = titulo;
+        this.autor = autor;
+        setAno(ano);
+        this.isbn = isbn;
+        this.disponivel = disponivel;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        if (ano > 0 && ano <= 2026) {
+            this.ano = ano;
+        } else {
+            System.out.println("Ano inválido! Digite um ano entre 1 e 2026.");
+        }
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public boolean isDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
+    }
+
+    public int calcularIdadeLivro() {
+        return 2026 - ano;
+    }
+
+    public boolean verificarLivroAntigo() {
+        return calcularIdadeLivro() > 50;
+    }
+
+    public void emprestar() {
+        if (disponivel) {
+            disponivel = false;
+            System.out.println("Livro emprestado com sucesso!");
+        } else {
+            System.out.println("O livro não está disponível.");
+        }
+    }
+
+    public void devolver() {
+        if (!disponivel) {
+            disponivel = true;
+            System.out.println("Livro devolvido com sucesso!");
+        } else {
+            System.out.println("O livro já está disponível.");
+        }
+    }
+
+    public void exibirInformacoes() {
+        System.out.println("Título: " + titulo);
+        System.out.println("Autor: " + autor);
+        System.out.println("Ano: " + ano);
+        System.out.println("ISBN: " + isbn);
+        System.out.println("Disponível: " + (disponivel ? "Sim" : "Não"));
+        System.out.println("Idade do livro: " + calcularIdadeLivro() + " anos");
+        System.out.println("Livro antigo: " + (verificarLivroAntigo() ? "Sim" : "Não"));
+    }
+}
 
